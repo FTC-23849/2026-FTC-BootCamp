@@ -68,26 +68,38 @@ public class SampleAutonomous extends LinearOpMode {
         if (isStopRequested()) return;
 
         Actions.runBlocking(new SequentialAction(
+
             new ParallelAction(
+
                 drive.actionBuilder(startPose)
+
                     .splineTo(new Vector2d(14, -26), Math.toRadians(90),
                         new TranslationalVelConstraint(MAX_VEL),
                         new ProfileAccelConstraint(MIN_ACCEL, MAX_ACCEL))
+
                     .splineTo(new Vector2d(56, -26), Math.toRadians(270),
                         new TranslationalVelConstraint(MAX_VEL),
                         new ProfileAccelConstraint(MIN_ACCEL, MAX_ACCEL))
+
                     .splineTo(new Vector2d(56, -38), Math.toRadians(270),
                         new TranslationalVelConstraint(MAX_VEL),
                         new ProfileAccelConstraint(MIN_ACCEL, MAX_ACCEL))
                     .build(),
+
                 new IntakeAction(INTAKE_SPEED)
             ),
+
+
+
             new IntakeAction(-INTAKE_SPEED),
             new SleepAction(2),
             new IntakeAction(0)
+
         ));
 
     }
+
+    // Action to set intake speed
 
     public class IntakeAction implements Action {
 
