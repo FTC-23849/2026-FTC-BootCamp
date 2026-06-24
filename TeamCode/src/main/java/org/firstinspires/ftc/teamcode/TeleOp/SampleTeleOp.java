@@ -16,7 +16,9 @@ public class SampleTeleOp extends LinearOpMode {
         DcMotor backLeftMotor = hardwareMap.dcMotor.get("LB");
         DcMotor frontRightMotor = hardwareMap.dcMotor.get("RF");
         DcMotor backRightMotor = hardwareMap.dcMotor.get("RB");
+
         CRServo intakeServo = hardwareMap.crservo.get("intakeServo");
+        intakeServo.setDirection(DcMotorSimple.Direction.REVERSE);
 
         // Reverse the right side motors. This may be wrong for your setup.
         // If your robot moves backwards when commanded to go forwards,
