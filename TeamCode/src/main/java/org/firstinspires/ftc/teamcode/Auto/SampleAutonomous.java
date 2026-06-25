@@ -20,6 +20,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.Auto.RRFiles.MecanumDrive;
 
@@ -34,9 +35,9 @@ public class SampleAutonomous extends LinearOpMode {
 
     CRServo intake;
 
-    public static double MAX_VEL      = 60;
-    public static double MIN_ACCEL    = -50;
-    public static double MAX_ACCEL    =  50;
+    public static double MAX_VEL      = 30;
+    public static double MIN_ACCEL    = -30;
+    public static double MAX_ACCEL    =  30;
     public static double INTAKE_SPEED =  1.0;
 
     @Override
@@ -51,7 +52,9 @@ public class SampleAutonomous extends LinearOpMode {
         rightFrontMotor = hardwareMap.get(DcMotorEx.class, "RF");
         leftBackMotor   = hardwareMap.get(DcMotorEx.class, "LB");
         rightBackMotor  = hardwareMap.get(DcMotorEx.class, "RB");
-        intake          = hardwareMap.get(CRServo.class, "intake");
+        intake          = hardwareMap.get(CRServo.class, "intakeServo");
+
+        intake.setDirection(CRServo.Direction.REVERSE);
 
         leftFrontMotor.setDirection(DcMotorEx.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotorEx.Direction.REVERSE);
@@ -73,11 +76,11 @@ public class SampleAutonomous extends LinearOpMode {
 
                 drive.actionBuilder(startPose)
 
-                    .splineTo(new Vector2d(14, -26), Math.toRadians(90),
+                    .splineTo(new Vector2d(14, -35), Math.toRadians(90),
                         new TranslationalVelConstraint(MAX_VEL),
                         new ProfileAccelConstraint(MIN_ACCEL, MAX_ACCEL))
 
-                    .splineTo(new Vector2d(56, -26), Math.toRadians(270),
+                    .splineTo(new Vector2d(56, -35), Math.toRadians(270),
                         new TranslationalVelConstraint(MAX_VEL),
                         new ProfileAccelConstraint(MIN_ACCEL, MAX_ACCEL))
 

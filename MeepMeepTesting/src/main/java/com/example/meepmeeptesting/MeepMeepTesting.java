@@ -8,7 +8,7 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
 public class MeepMeepTesting {
     public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(1000);
+        MeepMeep meepMeep = new MeepMeep(600);
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 .setConstraints(60, 50, Math.toRadians(180), Math.toRadians(180), 15)
@@ -17,8 +17,8 @@ public class MeepMeepTesting {
 
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(14, -60, Math.toRadians(90)))
                 // TEST PATHS HERE:
-                .splineTo(new Vector2d(14, -26), Math.toRadians(90))
-                .splineTo(new Vector2d(56, -26), Math.toRadians(270))
+                .splineTo(new Vector2d(14, -35), Math.toRadians(90))
+                .splineTo(new Vector2d(56, -35), Math.toRadians(270))
                 .splineTo(new Vector2d(56, -38), Math.toRadians(270))
                 .build());
 
